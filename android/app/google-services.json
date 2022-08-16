@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "76375967504",
+    "project_id": "project-blackforest",
+    "storage_bucket": "project-blackforest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:76375967504:android:9fb814f6222eb4a407c795",
+        "android_client_info": {
+          "package_name": "com.example.project_blackforest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "76375967504-1ht65pjttbefhlm35dq7ida6on1corji.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzmdYtd8-o6dZrIqHlGT3BkIZuRn7yAxk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "76375967504-1ht65pjttbefhlm35dq7ida6on1corji.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
