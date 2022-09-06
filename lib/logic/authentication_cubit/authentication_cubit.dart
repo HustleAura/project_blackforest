@@ -7,13 +7,12 @@ part 'authentication_state.dart';
 
 class AuthenticationCubit extends Cubit<AuthenticationState> {
   final FirebaseAuth _firebaseAuth;
-  late StreamSubscription<User?> _userAuthState;
 
   AuthenticationCubit(this._firebaseAuth)
       : super(
           AuthenticationState.signedOut,
         ) {
-    _userAuthState = _firebaseAuth.authStateChanges().listen((authState) {
+    _firebaseAuth.authStateChanges().listen((authState) {
       if (authState == null) {
         emit(
           AuthenticationState.signedOut,
@@ -25,6 +24,8 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       }
     });
   }
+
+  FirebaseAuth get firebaseAuthInstance => _firebaseAuth;
 
   Future<void> signIn({required String email, required String password}) async {
     try {

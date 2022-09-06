@@ -48,7 +48,7 @@ class _AuthPageState extends State<AuthPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Welcome to Bookify',
+                        'Welcome to Talk with QR',
                         textAlign: TextAlign.center,
                         style: GoogleFonts.kanit(
                           color: primaryColor,

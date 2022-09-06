@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_blackforest/presentation/screens/chat_page.dart';
 import 'package:project_blackforest/presentation/widgets/nav_bar_icon.dart';
 
 import 'contacts_page.dart';
@@ -41,7 +42,7 @@ class _HomePageState extends State<HomePage> {
         onPageChanged: _updatePage,
         controller: _pageController,
         children: const [
-          ContactsPage(),
+          ChatPage(),
           ProfilePage(),
           ScanqrPage(),
         ],

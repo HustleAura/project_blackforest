@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:project_blackforest/logic/firestore_service.dart';
+import 'package:provider/provider.dart';
 
 import 'presentation/screens/auth_page.dart';
 import 'presentation/screens/home_page.dart';
@@ -21,21 +24,36 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AuthenticationCubit(firebaseAuth),
-      child: MaterialApp(
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: Scaffold(
-          body: BlocBuilder<AuthenticationCubit, AuthenticationState>(
-            builder: (context, state) {
-              if (state == AuthenticationState.signedIn) {
-                return HomePage();
-              } else {
-                return AuthPage(true);
-              }
-            },
+    return MultiProvider(
+      providers: [
+        Provider(
+          create: (context) => FireStoreService(
+            firebaseFirestoreInstance: FirebaseFirestore.instance,
+          ),
+        )
+      ],
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => AuthenticationCubit(
+              FirebaseAuth.instance,
+            ),
+          )
+        ],
+        child: MaterialApp(
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: Scaffold(
+            body: BlocBuilder<AuthenticationCubit, AuthenticationState>(
+              builder: (context, state) {
+                if (state == AuthenticationState.signedIn) {
+                  return HomePage();
+                } else {
+                  return AuthPage(true);
+                }
+              },
+            ),
           ),
         ),
       ),
