@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
         onPageChanged: _updatePage,
         controller: _pageController,
         children: const [
-          ChatPage(),
+          ContactPage(),
           ProfilePage(),
           ScanqrPage(),
         ],

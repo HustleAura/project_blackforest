@@ -73,7 +73,8 @@ class FireStoreService {
     );
   }
 
-  Stream personalChats(String senderEmail, String receiverEmail) {
+  Stream<QuerySnapshot<Map<String, dynamic>>> personalChats(
+      String senderEmail, String receiverEmail) {
     final userRef = firebaseFirestoreInstance
         .collection(Chats_Collection)
         .doc(senderEmail)
@@ -82,7 +83,7 @@ class FireStoreService {
     return userRef.snapshots();
   }
 
-  Stream contactList(String userEmail) {
+  Stream<DocumentSnapshot<Map<String, dynamic>>> contactList(String userEmail) {
     final userRef =
         firebaseFirestoreInstance.collection(Contact_Collection).doc(userEmail);
 
