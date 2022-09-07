@@ -4,10 +4,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:project_blackforest/logic/firestore_service.dart';
+import 'package:project_blackforest/presentation/screens/land_page.dart';
 import 'package:provider/provider.dart';
 
-import 'presentation/screens/auth_page.dart';
-import 'presentation/screens/home_page.dart';
 import 'logic/authentication_cubit/authentication_cubit.dart';
 
 Future<void> main() async {
@@ -44,17 +43,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: Scaffold(
-            body: BlocBuilder<AuthenticationCubit, AuthenticationState>(
-              builder: (context, state) {
-                if (state == AuthenticationState.signedIn) {
-                  return HomePage();
-                } else {
-                  return AuthPage(true);
-                }
-              },
-            ),
-          ),
+          home: const LandPage(),
         ),
       ),
     );

@@ -9,12 +9,13 @@ Future<List<Widget>> contactList(
   List<dynamic> contactArray,
   FirebaseFirestore firebaseFirestoreInstance,
 ) async {
-  List<Widget> contactList = [];
+  List<Widget> contactList = [Text('sample')];
   for (var i = 0; i < contactArray.length; i++) {
     final userName = await firebaseFirestoreInstance
         .collection(User_Collection)
         .doc(contactArray[i].toString())
         .get();
+
     contactList.add(
       ContactTile(
         user: AppUser(
@@ -44,10 +45,13 @@ class ContactList extends StatelessWidget {
       builder: ((context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return CircularProgressIndicator();
-        } else {
+        } else if (snapshot.hasData) {
           return ListView(
-            children: snapshot.data!,
+            shrinkWrap: true,
+            children: snapshot.data ?? [],
           );
+        } else {
+          return Text('Oops! Something went wrong. Please try again later');
         }
       }),
     );
